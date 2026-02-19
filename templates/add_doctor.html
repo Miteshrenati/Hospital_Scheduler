@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+<a href="/">Home</a> |
+<a href="/add">Add Doctor</a> |
+<a href="/doctors">Doctors</a> |
+<a href="/book">Book</a>
+<hr>
+
+
+<h2>Add Doctor</h2>
+
+<form method="POST">
+    Doctor ID:<br>
+    <input type="text" name="doctorId" required><br><br>
+
+    Specialization:<br>
+    <input type="text" name="specialization" required><br><br>
+
+    Max Daily Patients:<br>
+    <input type="number" name="maxPatients" required><br><br>
+
+    <button type="submit">Add Doctor</button>
+</form>
+
+<br>
+<a href="/">Back Home</a>
+
+@app.route("/doctors")
+def doctors():
+    conn = sqlite3.connect("database.db")
+    cur = conn.cursor()
+
+    cur.execute("SELECT * FROM doctors")
+    data = cur.fetchall()
+
+    conn.close()
+
+    return render_template("doctors.html", doctors=data)

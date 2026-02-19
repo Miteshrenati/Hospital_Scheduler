@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+<a href="/">Home</a> |
+<a href="/add">Add Doctor</a> |
+<a href="/doctors">Doctors</a> |
+<a href="/book">Book</a>
+<hr>
+
+
+<h2>Doctors List</h2>
+
+<table border="1">
+<tr>
+    <th>ID</th>
+    <th>Specialization</th>
+    <th>Max</th>
+    <th>Current</th>
+    <th>Status</th>
+</tr>
+
+{% for d in doctors %}
+<tr>
+    <td>{{ d[0] }}</td>
+    <td>{{ d[1] }}</td>
+    <td>{{ d[2] }}</td>
+    <td>{{ d[3] }}</td>
+    <td>
+        {% if d[3] < d[2] %}
+            Available
+        {% else %}
+            Full
+        {% endif %}
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+
+<br>
+<a href="/">Back Home</a>

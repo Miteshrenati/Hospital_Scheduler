@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+<a href="/">Home</a> |
+<a href="/add">Add Doctor</a> |
+<a href="/doctors">Doctors</a> |
+<a href="/book">Book</a>
+<hr>
+
+
+<h2>Book Appointment</h2>
+
+<form method="POST">
+    Enter Specialization:<br>
+    <input type="text" name="specialization" required><br><br>
+
+    <button type="submit">Book</button>
+</form>
+
+<br>
+<a href="/">Back Home</a>
